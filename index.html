@@ -1859,6 +1859,172 @@
     align-items: center;
 }
 
+/* ============================================================
+   PINTEREST MASONRY SYSTEM — global pin card layout
+   ============================================================ */
+
+/* --- Shared pin card --- */
+.pin-card {
+    background:    var(--grad-card);
+    border-radius: 16px;
+    border:        1px solid rgba(255,255,255,0.07);
+    overflow:      hidden;
+    break-inside:  avoid;
+    transition:    transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position:      relative;
+}
+
+.pin-card:hover {
+    transform:    translateY(-6px);
+    box-shadow:   0 20px 50px rgba(0,0,0,0.55), 0 0 0 1px rgba(232,201,122,0.15);
+    border-color: rgba(232,201,122,0.2);
+}
+
+/* --- Services masonry --- */
+.services-masonry {
+    columns:     3;
+    column-gap:  18px;
+    margin-top:  3.5rem;
+}
+
+.services-masonry .pin-card {
+    margin-bottom: 18px;
+    padding:       2.2rem 2rem;
+}
+
+@media (max-width: 1024px) { .services-masonry { columns: 2; } }
+@media (max-width: 600px)  { .services-masonry { columns: 1; } }
+
+/* --- Testimonials masonry (already column-count, just pin-card style) --- */
+.testimonials-inner .testimonial-card {
+    border-radius: 16px;
+    overflow:      hidden;
+    transition:    transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.testimonials-inner .testimonial-card:hover {
+    transform:    translateY(-6px) rotate(0deg);
+    box-shadow:   0 20px 50px rgba(0,0,0,0.55), 0 0 0 1px rgba(232,201,122,0.15);
+    border-color: rgba(232,201,122,0.22);
+}
+
+/* --- Brands masonry grid --- */
+.brands-masonry {
+    columns:     5;
+    column-gap:  16px;
+    margin-top:  3rem;
+}
+
+.brands-masonry .pin-card {
+    margin-bottom: 16px;
+    padding:       1.4rem;
+    display:       flex;
+    flex-direction: column;
+    align-items:   center;
+    gap:           10px;
+    cursor:        pointer;
+}
+
+@media (max-width: 1200px) { .brands-masonry { columns: 4; } }
+@media (max-width: 900px)  { .brands-masonry { columns: 3; } }
+@media (max-width: 600px)  { .brands-masonry { columns: 2; } }
+
+/* --- About masonry cards --- */
+.about-masonry {
+    columns:     2;
+    column-gap:  20px;
+}
+
+.about-masonry .pin-card {
+    margin-bottom: 20px;
+    padding:       2rem;
+}
+
+@media (max-width: 768px) { .about-masonry { columns: 1; } }
+
+/* --- Contact masonry --- */
+.contact-masonry {
+    columns:     2;
+    column-gap:  24px;
+    align-items: start;
+}
+
+.contact-masonry .pin-card {
+    margin-bottom: 20px;
+    padding:       2.2rem;
+    break-inside:  avoid;
+}
+
+@media (max-width: 768px) {
+    .contact-masonry { columns: 1 !important; }
+    .about-masonry   { columns: 1 !important; }
+}
+
+/* --- Pin card inner elements --- */
+.pin-label {
+    font-size:      0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color:          var(--accent);
+    margin-bottom:  0.5rem;
+    display:        block;
+}
+
+.pin-title {
+    font-family:    var(--font-display);
+    font-size:      1.3rem;
+    letter-spacing: 0.04em;
+    line-height:    1.15;
+    margin-bottom:  0.75rem;
+}
+
+.pin-body {
+    font-size:   0.88rem;
+    color:       var(--muted);
+    line-height: 1.75;
+    font-weight: 400;
+}
+
+.pin-num {
+    font-family:   var(--font-display);
+    font-size:     3rem;
+    color:         rgba(232,201,122,0.12);
+    line-height:   1;
+    margin-bottom: 1rem;
+    transition:    color 0.3s;
+}
+
+.pin-card:hover .pin-num {
+    color: rgba(232,201,122,0.3);
+}
+
+/* stat highlight pin */
+.pin-stat .pin-big {
+    font-family:    var(--font-display);
+    font-size:      3.5rem;
+    line-height:    1;
+    background:     var(--grad-gold-h);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* gold accent top bar on hover */
+.pin-card::after {
+    content:    '';
+    position:   absolute;
+    top:        0; left: 0; right: 0;
+    height:     3px;
+    background: var(--grad-gold-h);
+    opacity:    0;
+    transition: opacity 0.3s;
+    border-radius: 16px 16px 0 0;
+}
+
+.pin-card:hover::after {
+    opacity: 1;
+}
+
     </style>
 
 </head>
@@ -2588,11 +2754,17 @@
     </section>
 
     <section class="about" id="about">
-        <div class="about-inner">
 
-            <div class="about-visual reveal">
-                <div class="about-photo">
-                    <img src="imgs/01.png" alt="shalemraj Raj – Video Editor" loading="lazy" decoding="async">
+        <div class="reveal" style="margin-bottom: 3rem">
+            <p class="section-eyebrow">About Me</p>
+            <h2 class="section-title">THE EDITOR BEHIND THE FRAME</h2>
+        </div>
+
+        <div class="about-masonry">
+
+            <div class="pin-card reveal" style="transition-delay:0.05s; padding:0; overflow:hidden; position:relative;">
+                <div class="about-photo" style="aspect-ratio:3/4; position:relative;">
+                    <img src="imgs/01.png" alt="shalemraj Raj – Video Editor" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
                 </div>
                 <div class="about-badge" aria-label="4 years of experience">
                     <div class="badge-num">4+</div>
@@ -2600,26 +2772,40 @@
                 </div>
             </div>
 
-            <div class="about-text reveal" style="transition-delay: 0.15s">
-                <p class="section-eyebrow">About Me</p>
-                <h2 class="section-title">THE EDITOR<br>BEHIND THE<br>FRAME</h2>
-                <p class="section-sub">
-                    I'm Shalem Raj — I'm a passionate AI Video Editor, Motion Graphics Designer, and Videographer 
-                    with 4+ years of experience creating impactful visual content for brands, educational institutions, 
-                    and digital platforms.
-                    <br><br>
-                    I enjoy transforming ideas into compelling stories that help organizations strengthen their brand presence, engage their audience, and communicate their message effectively. 
-                    Working with different brands has given me the opportunity to contribute to their growth while continuously improving my creativity, storytelling, and technical skills.
-                    <br><br>
-                    I'm always excited to learn new technologies, explore AI-powered workflows, and create content that delivers both creative value and meaningful results.
-                </p>
-                <div class="skills-list" aria-label="Skills">
+            <div class="pin-card pin-stat reveal" style="transition-delay:0.10s;">
+                <span class="pin-label">Who I Am</span>
+                <h3 class="pin-title">PASSIONATE AI VIDEO EDITOR</h3>
+                <p class="pin-body">I'm Shalem Raj — a passionate AI Video Editor, Motion Graphics Designer, and Videographer with 4+ years of experience creating impactful visual content for brands, educational institutions, and digital platforms.</p>
+            </div>
+
+            <div class="pin-card reveal" style="transition-delay:0.15s;">
+                <span class="pin-label">My Approach</span>
+                <h3 class="pin-title">STORIES THAT CONNECT</h3>
+                <p class="pin-body">I enjoy transforming ideas into compelling stories that help organizations strengthen their brand presence, engage their audience, and communicate their message effectively.</p>
+            </div>
+
+            <div class="pin-card reveal" style="transition-delay:0.20s;">
+                <span class="pin-label">Stats</span>
+                <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1rem;">
+                    <div><div class="pin-stat"><span class="pin-big">150+</span></div><div class="pin-label" style="margin:0">Projects</div></div>
+                    <div><div class="pin-stat"><span class="pin-big">80M+</span></div><div class="pin-label" style="margin:0">Views</div></div>
+                    <div><div class="pin-stat"><span class="pin-big">4+</span></div><div class="pin-label" style="margin:0">Years</div></div>
+                </div>
+                <p class="pin-body">Always excited to learn new technologies, explore AI-powered workflows, and create content that delivers both creative value and meaningful results.</p>
+            </div>
+
+            <div class="pin-card reveal" style="transition-delay:0.25s;">
+                <span class="pin-label">Skills</span>
+                <h3 class="pin-title">TOOLS &amp; EXPERTISE</h3>
+                <div class="skills-list" aria-label="Skills" style="margin-top:1rem;">
                     <span class="skill-pill">Adobe Premiere Pro</span>
                     <span class="skill-pill">After Effects</span>
                     <span class="skill-pill">Color Grading</span>
                     <span class="skill-pill">Motion Graphics</span>
                     <span class="skill-pill">Sound Design</span>
                     <span class="skill-pill">Thumbnail Design</span>
+                    <span class="skill-pill">DaVinci Resolve</span>
+                    <span class="skill-pill">AI Workflows</span>
                 </div>
             </div>
 
@@ -2633,42 +2819,48 @@
             <h2 class="section-title">SERVICES</h2>
         </div>
 
-        <div class="services-grid">
+        <div class="services-masonry">
 
-            <div class="service-card reveal" style="transition-delay: 0.05s">
-                <div class="service-num">01</div>
-                <h3 class="service-title">YOUTUBE VIDEO EDITING</h3>
-                <p class="service-desc">Engaging, high-retention edits designed for YouTube algorithms. Fast cuts, clean transitions, dynamic text overlays, and thumbnail-ready color grading.</p>
+            <div class="pin-card reveal" style="transition-delay: 0.05s">
+                <div class="pin-num">01</div>
+                <span class="pin-label">Most Popular</span>
+                <h3 class="pin-title">YOUTUBE VIDEO EDITING</h3>
+                <p class="pin-body">Engaging, high-retention edits designed for YouTube algorithms. Fast cuts, clean transitions, dynamic text overlays, and thumbnail-ready color grading.</p>
             </div>
 
-            <div class="service-card reveal" style="transition-delay: 0.10s">
-                <div class="service-num">02</div>
-                <h3 class="service-title">REELS &amp; SHORTS</h3>
-                <p class="service-desc">Short-form vertical video that hooks viewers in the first 3 seconds. Optimized for Instagram, TikTok, and YouTube Shorts with on-trend effects.</p>
+            <div class="pin-card reveal" style="transition-delay: 0.10s">
+                <div class="pin-num">02</div>
+                <span class="pin-label">Trending</span>
+                <h3 class="pin-title">REELS &amp; SHORTS</h3>
+                <p class="pin-body">Short-form vertical video that hooks viewers in the first 3 seconds. Optimized for Instagram, TikTok, and YouTube Shorts with on-trend effects.</p>
             </div>
 
-            <div class="service-card reveal" style="transition-delay: 0.15s">
-                <div class="service-num">03</div>
-                <h3 class="service-title">BRAND FILMS</h3>
-                <p class="service-desc">Cinematic storytelling for brands. Product showcases, company culture videos, and event highlights that leave a lasting impression.</p>
+            <div class="pin-card reveal" style="transition-delay: 0.15s">
+                <div class="pin-num">03</div>
+                <span class="pin-label">Premium</span>
+                <h3 class="pin-title">BRAND FILMS</h3>
+                <p class="pin-body">Cinematic storytelling for brands. Product showcases, company culture videos, and event highlights that leave a lasting impression. Every frame crafted to elevate your identity.</p>
             </div>
 
-            <div class="service-card reveal" style="transition-delay: 0.20s">
-                <div class="service-num">04</div>
-                <h3 class="service-title">COLOR GRADING</h3>
-                <p class="service-desc">Professional color correction and creative grading using DaVinci Resolve. Achieve the exact mood and tone your project demands.</p>
+            <div class="pin-card reveal" style="transition-delay: 0.20s">
+                <div class="pin-num">04</div>
+                <span class="pin-label">Signature</span>
+                <h3 class="pin-title">COLOR GRADING</h3>
+                <p class="pin-body">Professional color correction and creative grading using DaVinci Resolve. Achieve the exact mood and tone your project demands.</p>
             </div>
 
-            <div class="service-card reveal" style="transition-delay: 0.25s">
-                <div class="service-num">05</div>
-                <h3 class="service-title">MOTION GRAPHICS</h3>
-                <p class="service-desc">Animated titles, lower thirds, logo reveals, and custom infographics that add production value and visual clarity to any video.</p>
+            <div class="pin-card reveal" style="transition-delay: 0.25s">
+                <div class="pin-num">05</div>
+                <span class="pin-label">Add-On</span>
+                <h3 class="pin-title">MOTION GRAPHICS</h3>
+                <p class="pin-body">Animated titles, lower thirds, logo reveals, and custom infographics that add production value and visual clarity to any video.</p>
             </div>
 
-            <div class="service-card reveal" style="transition-delay: 0.30s">
-                <div class="service-num">06</div>
-                <h3 class="service-title">MUSIC &amp; SFX</h3>
-                <p class="service-desc">Full podcast video editing with dynamic captions, b-roll integration, speaker highlights, and social media clip extraction.</p>
+            <div class="pin-card reveal" style="transition-delay: 0.30s">
+                <div class="pin-num">06</div>
+                <span class="pin-label">Full Package</span>
+                <h3 class="pin-title">MUSIC &amp; SFX</h3>
+                <p class="pin-body">Full podcast video editing with dynamic captions, b-roll integration, speaker highlights, and social media clip extraction.</p>
             </div>
 
         </div>
@@ -2812,67 +3004,77 @@
     </section>
 
     <section class="contact" id="contact">
-        <div class="contact-inner">
 
-            <div class="reveal">
-                <p class="section-eyebrow">Get In Touch</p>
-                <h2 class="section-title">LET'S CREATE<br>TOGETHER</h2>
-                <p class="section-sub" style="margin-bottom: 2.5rem">
-                    Have a project in mind? I'd love to hear about it. Send me a message and
-                    I'll get back to you within 24 hours.
-                </p>
+        <div class="reveal" style="margin-bottom:3rem;">
+            <p class="section-eyebrow">Get In Touch</p>
+            <h2 class="section-title">LET'S CREATE TOGETHER</h2>
+        </div>
+
+        <div class="contact-masonry" style="columns:2; column-gap:24px;">
+
+            <div class="pin-card reveal" style="transition-delay:0.05s; break-inside:avoid; margin-bottom:20px;">
+                <span class="pin-label">Say Hello</span>
+                <h3 class="pin-title" style="margin-bottom:1rem;">START A PROJECT</h3>
+                <p class="pin-body" style="margin-bottom:2rem;">Have a project in mind? I'd love to hear about it. Send me a message and I'll get back to you within 24 hours.</p>
                 <div class="contact-info">
-                    <div class="ci-item">
+                    <div class="ci-item" style="margin-bottom:1.2rem;">
                         <span class="ci-label">Email</span>
-                        <span class="ci-value">cshalemrajv.editor@gmail.com</span>
+                        <span class="ci-value" style="display:block;font-size:0.95rem;">cshalemrajv.editor@gmail.com</span>
                     </div>
-
-                    <div class="ci-item">
+                    <div class="ci-item" style="margin-bottom:1.2rem;">
                         <span class="ci-label">Phone</span>
-                        <span class="ci-value">+91 70137 10874</span>
+                        <span class="ci-value" style="display:block;font-size:0.95rem;">+91 70137 10874</span>
                     </div>
                     <div class="ci-item">
                         <span class="ci-label">Available For</span>
-                        <span class="ci-value">Freelance &amp; Full-Time</span>
+                        <span class="ci-value" style="display:block;font-size:0.95rem;">Freelance &amp; Full-Time</span>
                     </div>
                 </div>
-                <div class="social-links" aria-label="Social media links">
+                <div class="social-links" aria-label="Social media links" style="margin-top:1.5rem;">
                     <a href="https://www.instagram.com/shalemraj._/?hl=en" class="social-link" aria-label="Instagram">IG</a>
                 </div>
             </div>
 
-            <div class="contact-form reveal" style="transition-delay: 0.15s">
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="fname">First Name</label>
-                        <input type="text" id="fname" placeholder="John">
-                    </div>
-                    <div class="form-group">
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" placeholder="Doe">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="john@example.com">
-                </div>
-                <div class="form-group">
-                    <label for="message">Project Details</label>
-                    <textarea id="message" placeholder="Tell me about your project, timeline, and goals..."></textarea>
-                </div>
-
-                <button
-                    class="btn-primary"
-                    type="button"
-                    style="margin-top: 0.5rem; align-self: flex-start; cursor: pointer"
-                    onclick="handleSubmit(this)"
-                >
-                    Send Message
-                </button>
-
+            <div class="pin-card reveal" style="transition-delay:0.10s; break-inside:avoid; margin-bottom:20px;">
+                <span class="pin-label">Response Time</span>
+                <div class="pin-stat" style="margin-bottom:0.5rem;"><span class="pin-big">24h</span></div>
+                <p class="pin-body">Average response time. Quick, professional, and always communicative throughout the project.</p>
             </div>
+
+            <div class="pin-card reveal" style="transition-delay:0.15s; break-inside:avoid; margin-bottom:20px;">
+                <span class="pin-label">Send Message</span>
+                <h3 class="pin-title" style="margin-bottom:1.2rem;">DROP A MESSAGE</h3>
+                <div class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last Name</label>
+                            <input type="text" id="lname" placeholder="Doe">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" placeholder="Tell me about your project, timeline, and goals..."></textarea>
+                    </div>
+                    <button class="btn-primary" type="button" style="margin-top:0.5rem; cursor:pointer;" onclick="handleSubmit(this)">
+                        Send Message
+                    </button>
+                </div>
+            </div>
+
+            <div class="pin-card reveal" style="transition-delay:0.20s; break-inside:avoid; margin-bottom:20px;">
+                <span class="pin-label">Availability</span>
+                <h3 class="pin-title" style="margin-bottom:0.75rem;">OPEN FOR WORK</h3>
+                <p class="pin-body">Currently accepting new projects for YouTube, Reels, Brand Films &amp; Motion Graphics. Let's build something great together.</p>
+            </div>
+
         </div>
     </section>
 
