@@ -86,7 +86,7 @@
             top:             0;
             left:            0;
             right:           0;
-            z-index:         500;
+            z-index:         1050;
             display:         flex;
             align-items:     center;
             justify-content: space-between;
@@ -108,7 +108,7 @@
             -webkit-text-fill-color: transparent;
             background-clip:    text;
             text-decoration:    none;
-            z-index:            600;
+            z-index:            1200;
             flex-shrink:        0;
         }
 
@@ -172,7 +172,10 @@
             flex-direction:   column;
             justify-content:  space-between;
             cursor:           pointer;
-            z-index:          600;
+            position:         fixed;
+            top:              1.3rem;
+            right:            1.2rem;
+            z-index:          1200;
             background:       none;
             border:           none;
             padding:          0;
@@ -198,7 +201,7 @@
             background:      rgba(9, 9, 9, 0.97);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            z-index:         500;
+            z-index:         1100;
             display:         flex;
             flex-direction:  column;
             align-items:     center;
@@ -2188,19 +2191,19 @@
 
         <a href="#contact" class="nav-cta" onclick="closeMenu()">Hire Me</a>
 
-        <button
-            class="hamburger"
-            id="hamburger"
-            aria-label="Toggle menu"
-            aria-expanded="false"
-            onclick="toggleMenu()"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
     </nav>
+
+    <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        onclick="toggleMenu()"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
     <div class="nav-overlay" id="nav-overlay">
         <a href="#portfolio"    onclick="closeMenu()">Work</a>
