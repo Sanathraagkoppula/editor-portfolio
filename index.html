@@ -8,18 +8,8 @@
     <meta name="description" content="Professional cinematic video editor and motion designer creating commercials, YouTube videos, social media reels, motion graphics, and brand films.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        rel="preload"
-        as="style"
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
-        onload="this.onload=null;this.rel='stylesheet'"
-    >
-    <noscript>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
-            rel="stylesheet"
-        >
-    </noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.cdnfonts.com/css/autography">
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -329,11 +319,12 @@
 
         .hero-title {
             font-family:     var(--font-display);
-            font-size:       clamp(4.5rem, 12vw, 10rem);
+            font-size:       clamp(3rem, 7vw, 6rem);
             line-height:     0.92;
             letter-spacing:  0.04em;
             margin-bottom:   1.5rem;
             color:           var(--white);
+            white-space:     nowrap;
         }
 
         .hero-title span {
@@ -440,7 +431,7 @@
             .hero-frame:nth-child(3)            { display: none !important; }
             .hero-content                       { max-width: 100%; position: relative; z-index: 2; }
             .hero-tag                           { font-size: 0.68rem; padding: 0.28rem 0.75rem; margin-bottom: 1rem; }
-            .hero-title                         { font-size: clamp(2.8rem, 10vw, 4.5rem); margin-bottom: 1rem; }
+            .hero-title                         { font-size: clamp(1.8rem, 7vw, 3rem); margin-bottom: 1rem; white-space: nowrap; }
             .hero-desc                          { font-size: 0.88rem; max-width: 100%; margin-bottom: 1.5rem; }
 
             .hero-actions {
@@ -474,7 +465,7 @@
         }
 
         @media (max-width: 480px) {
-            .hero-title  { font-size: clamp(2.4rem, 11vw, 3.5rem); }
+            .hero-title  { font-size: clamp(1.5rem, 8vw, 2.2rem); white-space: nowrap; }
             .hero-stats  { gap: 0.5rem; }
             .stat-num    { font-size: 1.5rem; }
             .hero-stats > div { flex: 1; min-width: 0; }
@@ -2129,6 +2120,19 @@
     opacity: 1;
 }
 
+/* ── Anton — stats numbers & labels in About section only ── */
+#about .pin-big {
+    font-family: 'Anton', sans-serif !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.02em;
+}
+
+#about .pin-label[style*="margin:0"] {
+    font-family: 'Anton', sans-serif !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.15em;
+}
+
     </style>
 
 </head>
@@ -2186,7 +2190,7 @@
 
         <div class="hero-content">
             <div class="hero-tag">AI CINEMATIC VIDEO EDITOR • MOTION DESIGNER • VISUAL STORYTELLER</div>
-            <h1 class="hero-title">SHALEM<br><span>Raj</span></h1>
+            <h1 class="hero-title">SHALEM <span>RAJ</span></h1>
             <span font-size="30px">
                 Creating Viral Visual Stories That People Remember
             </span>
@@ -2202,13 +2206,6 @@
                 
             </div>
         </div>
-
-        <div class="hero-stats" aria-label="Statistics">
-            <div><div class="stat-num">150+</div><div class="stat-label">Projects Delivered</div></div>
-            <div><div class="stat-num">80M+</div><div class="stat-label">Organic Video Views</div></div>
-            <div><div class="stat-num">4+</div><div class="stat-label">Years of Creative Experience</div></div>
-        </div>
-
     </section>
 
     <div class="marquee-strip" aria-hidden="true">
@@ -2962,7 +2959,7 @@
                 <div class="pin-num">01</div>
                 <span class="pin-label">Most Popular</span>
                 <h3 class="pin-title">YOUTUBE VIDEO EDITING</h3>
-                <p class="pin-body">Engaging, high-retention edits designed for YouTube algorithms. Fast cuts, clean transitions, dynamic text overlays, and thumbnail-ready color grading.</p>
+                <p class="pin-body">High-retention edits designed for YouTube algorithms. Fast cuts, clean transitions, dynamic text overlays, and thumbnail-ready color grading.</p>
             </div>
 
             <div class="pin-card reveal" style="transition-delay: 0.10s">
@@ -2976,7 +2973,7 @@
                 <div class="pin-num">02</div>
                 <span class="pin-label">Premium</span>
                 <h3 class="pin-title">BRAND FILMS</h3>
-                <p class="pin-body">Cinematic storytelling for brands. Product showcases, company culture videos, and event highlights that leave a lasting impression. Every frame crafted to elevate your identity.</p>
+                <p class="pin-body">Storytelling for brands. Product showcases, company culture videos that leave a lasting impression. Every frame crafted to elevate your identity.</p>
             </div>
 
             <div class="pin-card reveal" style="transition-delay: 0.20s">
