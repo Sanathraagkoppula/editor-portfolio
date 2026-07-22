@@ -2503,40 +2503,55 @@
                 text-transform: uppercase;
                 color:          var(--muted);
             ">Want to see the full collection?</p>
+
+            <!-- Clickable macOS folder -->
             <a
                 href="https://drive.google.com/drive/folders/14MsbL5Q1w8O1A46sxO7Q9FtVX6fcnWPm?usp=sharing"
                 target="_blank"
                 rel="noopener"
-                style="
-                    display:         inline-flex;
-                    align-items:     center;
-                    gap:             0.65rem;
-                    background:      transparent;
-                    border:          1px solid var(--accent);
-                    color:           var(--accent);
-                    padding:         0.85rem 5rem;
-                    min-width:       360px;
-                    justify-content: center;
-                    font-family:     var(--font-body);
-                    font-size:       0.82rem;
-                    font-weight:     600;
-                    letter-spacing:  0.14em;
-                    text-transform:  uppercase;
-                    text-decoration: none;
-                    transition:      background 0.25s, color 0.25s, transform 0.2s;
-                "
-                onmouseover="this.style.background='var(--accent)';this.style.color='var(--black)';this.style.transform='translateY(-2px)'"
-                onmouseout="this.style.background='transparent';this.style.color='var(--accent)';this.style.transform='translateY(0)'"
+                style="display:inline-block; text-decoration:none; transition: transform 0.25s, filter 0.25s;"
+                onmouseover="this.style.transform='translateY(-6px) scale(1.04)';this.style.filter='drop-shadow(0 16px 32px rgba(245,185,30,0.45))'"
+                onmouseout="this.style.transform='translateY(0) scale(1)';this.style.filter='drop-shadow(0 8px 20px rgba(245,185,30,0.25))'"
+                title="Open Google Drive Folder"
             >
-                <svg width="18" height="18" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                    <path d="M6.6 66.85l3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8H0a15.92 15.92 0 001.9 7.9z"/>
-                    <path d="M43.65 25L29.9 1.2a16.18 16.18 0 00-3.3 3.3L1.9 49.1A15.83 15.83 0 000 57h27.5z"/>
-                    <path d="M73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25A15.92 15.92 0 0087.3 50H59.8l5.85 11.5z"/>
-                    <path d="M43.65 25L57.4 1.2A15.85 15.85 0 0049.5 0h-11.7a15.85 15.85 0 00-7.9 1.2z"/>
-                    <path d="M59.8 50H87.3a16.18 16.18 0 00-1.9-7.9L70.8 15.55a15.85 15.85 0 00-3.3-3.3L43.65 55z"/>
-                    <path d="M27.5 50L13.75 73.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.4 4.5-1.2L59.8 50z"/>
+                <svg width="200" height="170" viewBox="0 0 200 170" fill="none" xmlns="http://www.w3.org/2000/svg"
+                     style="filter: drop-shadow(0 8px 20px rgba(245,185,30,0.25));">
+
+                    <!-- Back shadow layer -->
+                    <rect x="10" y="38" width="180" height="125" rx="14" fill="#b86e00" opacity="0.4"/>
+
+                    <!-- Folder back panel -->
+                    <rect x="6" y="36" width="180" height="124" rx="13" fill="#e8930a"/>
+
+                    <!-- Tab (top-left bump) -->
+                    <path d="M6 52 C6 44 12 38 20 38 L72 38 L84 28 C86 25 90 23 94 23 L130 23 C136 23 140 27 140 33 L140 52 Z" fill="#cc7a00"/>
+                    <!-- Tab top highlight -->
+                    <path d="M6 52 C6 44 12 38 20 38 L72 38 L84 28 C86 25 90 23 94 23 L130 23 C136 23 140 27 140 33 L140 38 C134 35 128 34 122 34 L94 34 C91 34 88 35 86 38 L74 48 L20 48 C14 48 8 50 6 52 Z" fill="#d48800" opacity="0.6"/>
+
+                    <!-- Folder front main body -->
+                    <rect x="6" y="50" width="188" height="112" rx="13" fill="#F5A623"/>
+
+                    <!-- Top gloss shine -->
+                    <rect x="8" y="52" width="184" height="22" rx="10" fill="white" opacity="0.18"/>
+
+                    <!-- Mid shine stripe -->
+                    <rect x="8" y="52" width="184" height="8" rx="6" fill="white" opacity="0.12"/>
+
+                    <!-- Bottom shadow inside folder -->
+                    <rect x="6" y="130" width="188" height="32" rx="0 0 13 13" fill="#d4880a" opacity="0.35"/>
+
+                    <!-- Left edge depth -->
+                    <rect x="6" y="50" width="6" height="112" rx="3" fill="#cc7a00" opacity="0.3"/>
+
+                    <!-- Photos peeking from tab -->
+                    <!-- Photo 1 (dark card behind) -->
+                    <rect x="92" y="18" width="34" height="26" rx="4" fill="#2a2a3a" transform="rotate(-8 109 31)"/>
+                    <rect x="93" y="19" width="32" height="18" rx="3" fill="#3a3a5a" transform="rotate(-8 109 28)"/>
+                    <!-- Photo 2 (lighter card front) -->
+                    <rect x="110" y="16" width="34" height="26" rx="4" fill="#3a3a4a" transform="rotate(4 127 29)"/>
+                    <rect x="111" y="17" width="32" height="18" rx="3" fill="#4a4a6a" transform="rotate(4 127 26)"/>
+
                 </svg>
-                Check More Work
             </a>
         </div>
 
