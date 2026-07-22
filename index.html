@@ -639,17 +639,17 @@
         /* Pinterest masonry — all modes */
         .portfolio-grid.masonry-mode,
         .portfolio-grid.reels-mode {
-            columns:    4;
-            column-gap: 12px;
+            columns:    6;
+            column-gap: 8px;
         }
 
-        .portfolio-grid.reels-mode  { columns: 5; }
-        .portfolio-grid.masonry-mode.cols-5 { columns: 5; }
+        .portfolio-grid.reels-mode  { columns: 7; }
+        .portfolio-grid.masonry-mode.cols-5 { columns: 6; }
 
         .portfolio-grid.grid-mode {
             display:               grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap:                   12px;
+            grid-template-columns: repeat(6, 1fr);
+            gap:                   8px;
         }
 
         /* Every card: no forced aspect ratio — let content decide height */
@@ -658,10 +658,10 @@
             overflow:      hidden;
             background:    var(--card-bg);
             cursor:        pointer;
-            border-radius: 16px;
+            border-radius: 10px;
             display:       inline-block;
             width:         100%;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             break-inside:  avoid;
             transition:    transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -839,40 +839,40 @@
         .hero-video.loaded { opacity: 1; transition: opacity 0.4s; }
 
         @media (max-width: 1200px) {
-            .portfolio-grid.masonry-mode        { columns: 3; column-gap: 12px; }
-            .portfolio-grid.masonry-mode.cols-5 { columns: 4; }
-            .portfolio-grid.reels-mode          { columns: 4; column-gap: 12px; }
-            .portfolio-grid.grid-mode           { grid-template-columns: repeat(3, 1fr); }
+            .portfolio-grid.masonry-mode        { columns: 5; column-gap: 8px; }
+            .portfolio-grid.masonry-mode.cols-5 { columns: 5; }
+            .portfolio-grid.reels-mode          { columns: 6; column-gap: 8px; }
+            .portfolio-grid.grid-mode           { grid-template-columns: repeat(5, 1fr); }
         }
 
         @media (max-width: 1024px) {
-            .portfolio-grid.masonry-mode        { columns: 3; column-gap: 10px; }
-            .portfolio-grid.masonry-mode.cols-5 { columns: 3; }
-            .portfolio-grid.grid-mode           { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .portfolio-grid.reels-mode          { columns: 3; column-gap: 10px; }
+            .portfolio-grid.masonry-mode        { columns: 4; column-gap: 8px; }
+            .portfolio-grid.masonry-mode.cols-5 { columns: 4; }
+            .portfolio-grid.grid-mode           { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+            .portfolio-grid.reels-mode          { columns: 5; column-gap: 8px; }
         }
 
         @media (max-width: 768px) {
             .portfolio-grid.masonry-mode,
-            .portfolio-grid.masonry-mode.cols-5 { columns: 2; column-gap: 8px; }
-            .portfolio-grid.masonry-mode .portfolio-item { margin-bottom: 8px; }
-            .portfolio-grid.grid-mode           { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-            .portfolio-grid.reels-mode          { columns: 2; column-gap: 8px; }
-            .portfolio-grid.reels-mode .portfolio-item  { margin-bottom: 8px; }
+            .portfolio-grid.masonry-mode.cols-5 { columns: 3; column-gap: 6px; }
+            .portfolio-grid.masonry-mode .portfolio-item { margin-bottom: 6px; }
+            .portfolio-grid.grid-mode           { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+            .portfolio-grid.reels-mode          { columns: 3; column-gap: 6px; }
+            .portfolio-grid.reels-mode .portfolio-item  { margin-bottom: 6px; }
             .portfolio-header                   { margin-bottom: 2rem; }
             .filter-tabs                        { gap: 0.4rem; }
             .tab                                { padding: 0.4rem 0.85rem; font-size: 0.72rem; }
-            .portfolio-item                     { border-radius: 12px; margin-bottom: 8px; }
+            .portfolio-item                     { border-radius: 8px; margin-bottom: 6px; }
         }
 
         @media (max-width: 480px) {
             .portfolio-grid.masonry-mode,
-            .portfolio-grid.masonry-mode.cols-5 { columns: 2; column-gap: 6px; }
-            .portfolio-grid.masonry-mode .portfolio-item { margin-bottom: 6px; }
-            .portfolio-grid.reels-mode          { columns: 2; column-gap: 6px; }
-            .portfolio-grid.reels-mode .portfolio-item  { margin-bottom: 6px; }
-            .portfolio-grid.grid-mode           { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-            .portfolio-item                     { border-radius: 10px; }
+            .portfolio-grid.masonry-mode.cols-5 { columns: 2; column-gap: 5px; }
+            .portfolio-grid.masonry-mode .portfolio-item { margin-bottom: 5px; }
+            .portfolio-grid.reels-mode          { columns: 2; column-gap: 5px; }
+            .portfolio-grid.reels-mode .portfolio-item  { margin-bottom: 5px; }
+            .portfolio-grid.grid-mode           { grid-template-columns: repeat(2, 1fr); gap: 5px; }
+            .portfolio-item                     { border-radius: 6px; }
         }
 
         @media (max-width: 360px) {
@@ -2190,7 +2190,7 @@
 
         <div class="hero-content">
             <div class="hero-tag">AI CINEMATIC VIDEO EDITOR • MOTION DESIGNER • VISUAL STORYTELLER</div>
-            <h1 class="hero-title">SHALEM <span>RAJ</span></h1>
+            <h1 class="hero-title">SHALEM <span>Raj</span></h1>
             <span font-size="30px">
                 Creating Viral Visual Stories That People Remember
             </span>
@@ -2206,6 +2206,13 @@
                 
             </div>
         </div>
+
+        <div class="hero-stats" aria-label="Statistics">
+            <div><div class="stat-num">150+</div><div class="stat-label">Projects Delivered</div></div>
+            <div><div class="stat-num">80M+</div><div class="stat-label">Organic Video Views</div></div>
+            <div><div class="stat-num">4+</div><div class="stat-label">Years of Creative Experience</div></div>
+        </div>
+
     </section>
 
     <div class="marquee-strip" aria-hidden="true">
@@ -2959,7 +2966,7 @@
                 <div class="pin-num">01</div>
                 <span class="pin-label">Most Popular</span>
                 <h3 class="pin-title">YOUTUBE VIDEO EDITING</h3>
-                <p class="pin-body">High-retention edits designed for YouTube algorithms. Fast cuts, clean transitions, dynamic text overlays, and thumbnail-ready color grading.</p>
+                <p class="pin-body">Engaging, high-retention edits designed for YouTube algorithms. Fast cuts, clean transitions, dynamic text overlays, and thumbnail-ready color grading.</p>
             </div>
 
             <div class="pin-card reveal" style="transition-delay: 0.10s">
@@ -2973,7 +2980,7 @@
                 <div class="pin-num">02</div>
                 <span class="pin-label">Premium</span>
                 <h3 class="pin-title">BRAND FILMS</h3>
-                <p class="pin-body">Storytelling for brands. Product showcases, company culture videos that leave a lasting impression. Every frame crafted to elevate your identity.</p>
+                <p class="pin-body">Cinematic storytelling for brands. Product showcases, company culture videos, and event highlights that leave a lasting impression. Every frame crafted to elevate your identity.</p>
             </div>
 
             <div class="pin-card reveal" style="transition-delay: 0.20s">
@@ -3169,11 +3176,11 @@
                 </div>
             </div>
 
-            <!--div class="pin-card reveal" style="transition-delay:0.10s; break-inside:avoid; margin-bottom:20px;">
+            <div class="pin-card reveal" style="transition-delay:0.10s; break-inside:avoid; margin-bottom:20px;">
                 <span class="pin-label">Response Time</span>
                 <div class="pin-stat" style="margin-bottom:0.5rem;"><span class="pin-big">24h</span></div>
                 <p class="pin-body">Average response time. Quick, professional, and always communicative throughout the project.</p>
-            </div-->
+            </div>
 
             <div class="pin-card reveal" style="transition-delay:0.15s; break-inside:avoid; margin-bottom:20px;">
                 <span class="pin-label">Send Message</span>
@@ -3203,7 +3210,11 @@
                 </div>
             </div>
 
-            
+            <div class="pin-card reveal" style="transition-delay:0.20s; break-inside:avoid; margin-bottom:20px;">
+                <span class="pin-label">Availability</span>
+                <h3 class="pin-title" style="margin-bottom:0.75rem;">OPEN FOR WORK</h3>
+                <p class="pin-body">Currently accepting new projects for YouTube, Reels, Brand Films &amp; Motion Graphics. Let's build something great together.</p>
+            </div>
 
         </div>
     </section>
@@ -3227,7 +3238,7 @@
     </footer>
 
     <div class="footer-watermark">
-        Designed & Developed by Pixelo Studio Media <a href="https://pixelostudiomedia.vercel.app/" target="_blank" rel="noopener">(Sanath Raag.k)</a>
+        Designed & Developed by Pixelo Studio Media <a href="#" target="_blank" rel="noopener">(Sanath Raag.k)</a>
     </div>
 
     <script>
@@ -3252,50 +3263,94 @@
 
         document.querySelectorAll('video[data-src]').forEach(v => lazyVideoObserver.observe(v));
 
+        /* ── Pinterest random shuffle ── */
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        /* Assign Pinterest-style varied aspect ratios for "all" mixed view */
+        function assignPinterestRatio(item) {
+            item.style.aspectRatio = '';
+            const cat = item.getAttribute('data-category') || '';
+            if (cat.includes('youtube'))     item.style.aspectRatio = '16/9';
+            else if (cat.includes('shorts')) item.style.aspectRatio = '1/1';
+            else if (cat.includes('brand'))  item.style.aspectRatio = '9/16';
+            else                              item.style.aspectRatio = '9/16'; // reels
+        }
+
         function filterPortfolio(category, btn) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             btn.classList.add('active');
 
             const grid  = document.getElementById('portfolio-grid');
-            const items = grid.querySelectorAll('.portfolio-item[data-category]');
+            const items = Array.from(grid.querySelectorAll('.portfolio-item[data-category]'));
             const empty = document.getElementById('portfolio-empty');
 
-            if (category === 'all' || category === 'brand') {
-                grid.classList.add('masonry-mode');
-                grid.classList.remove('grid-mode', 'reels-mode');
-            } else if (category === 'reels' || category === 'shorts') {
-                grid.classList.remove('masonry-mode', 'grid-mode');
-                grid.classList.add('reels-mode');
-            } else {
-                grid.classList.remove('masonry-mode', 'reels-mode');
-                grid.classList.add('grid-mode');
-            }
+            // Always masonry for Pinterest look
+            grid.classList.add('masonry-mode');
+            grid.classList.remove('grid-mode', 'reels-mode', 'cols-5');
 
-            grid.classList.toggle('cols-5', category === 'brand');
+            if (category === 'all') {
+                // Only items tagged "all" in their category get shown & shuffled
+                const allItems = items.filter(item => {
+                    const cat = item.getAttribute('data-category') || '';
+                    const isEmpty = item.matches(
+                        ':has(.pi-video[src=""]), :has(.pi-video[data-src=""]), :has(.pi-video:not([src]):not([data-src])), :has(.pi-img[src=""]), :has(.pi-img:not([src]))'
+                    );
+                    return cat.trim().startsWith('all') && !isEmpty;
+                });
 
-            let visibleCount = 0;
+                // Shuffle only these "all" items
+                const shuffled = shuffleArray([...allItems]);
 
-            items.forEach(item => {
-                const cats    = item.getAttribute('data-category').split(' ');
-                const matches = cats.includes(category);
-
-                const isEmpty = item.matches(
-                    ':has(.pi-video[src=""]), :has(.pi-video[data-src=""]), :has(.pi-video:not([src]):not([data-src])), :has(.pi-img[src=""]), :has(.pi-img:not([src]))'
-                );
-
-                if (matches && !isEmpty) {
-                    item.classList.remove('hidden', 'filter-in');
-                    void item.offsetWidth;
-                    item.style.animationDelay = (visibleCount * 0.07) + 's';
-                    item.classList.add('filter-in');
-                    visibleCount++;
-                } else {
+                // Hide all
+                items.forEach(item => {
                     item.classList.add('hidden');
                     item.classList.remove('filter-in');
-                }
-            });
+                });
 
-            empty.classList.toggle('show', visibleCount === 0);
+                // Re-append shuffled in random order with mixed ratios
+                shuffled.forEach((item, i) => {
+                    grid.appendChild(item);
+                    assignPinterestRatio(item);
+                    item.classList.remove('hidden', 'filter-in');
+                    void item.offsetWidth;
+                    item.style.animationDelay = (i * 0.04) + 's';
+                    item.classList.add('filter-in');
+                });
+
+                empty.classList.toggle('show', shuffled.length === 0);
+
+            } else {
+                // Filtered view — show matching items in original order, natural ratios
+                let visibleCount = 0;
+                items.forEach(item => {
+                    const cats    = item.getAttribute('data-category').split(' ');
+                    const matches = cats.includes(category);
+                    const isEmpty = item.matches(
+                        ':has(.pi-video[src=""]), :has(.pi-video[data-src=""]), :has(.pi-video:not([src]):not([data-src])), :has(.pi-img[src=""]), :has(.pi-img:not([src]))'
+                    );
+
+                    // Reset aspect ratio to CSS default
+                    item.style.aspectRatio = '';
+
+                    if (matches && !isEmpty) {
+                        item.classList.remove('hidden', 'filter-in');
+                        void item.offsetWidth;
+                        item.style.animationDelay = (visibleCount * 0.05) + 's';
+                        item.classList.add('filter-in');
+                        visibleCount++;
+                    } else {
+                        item.classList.add('hidden');
+                        item.classList.remove('filter-in');
+                    }
+                });
+                empty.classList.toggle('show', visibleCount === 0);
+            }
         }
 
         function toggleMenu() {
