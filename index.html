@@ -193,41 +193,75 @@
         .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
         .nav-overlay {
-            display:    none;
-            position:   fixed;
-            inset:      0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index:    499;
+            position:        fixed;
+            inset:           0;
+            background:      rgba(9, 9, 9, 0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index:         500;
+            display:         flex;
+            flex-direction:  column;
+            align-items:     center;
+            justify-content: center;
+            gap:             2.5rem;
+            opacity:         0;
+            pointer-events:  none;
+            transition:      opacity 0.35s ease;
         }
 
         .nav-overlay.show {
-            display: block;
+            opacity:        1;
+            pointer-events: all;
         }
+
+        .nav-overlay a {
+            color:           var(--white);
+            text-decoration: none;
+            font-family:     var(--font-display);
+            font-size:       2rem;
+            letter-spacing:  0.15em;
+            text-transform:  uppercase;
+            opacity:         0;
+            transform:       translateY(16px);
+            transition:      opacity 0.4s ease, transform 0.4s ease, color 0.25s;
+        }
+
+        .nav-overlay.show a:nth-child(1) { opacity:1; transform:translateY(0); transition-delay: 0.05s; }
+        .nav-overlay.show a:nth-child(2) { opacity:1; transform:translateY(0); transition-delay: 0.10s; }
+        .nav-overlay.show a:nth-child(3) { opacity:1; transform:translateY(0); transition-delay: 0.15s; }
+        .nav-overlay.show a:nth-child(4) { opacity:1; transform:translateY(0); transition-delay: 0.20s; }
+        .nav-overlay.show a:nth-child(5) { opacity:1; transform:translateY(0); transition-delay: 0.25s; }
+        .nav-overlay.show a:nth-child(6) { opacity:1; transform:translateY(0); transition-delay: 0.30s; }
+        .nav-overlay.show a:nth-child(7) { opacity:1; transform:translateY(0); transition-delay: 0.35s; }
+
+        .nav-overlay a:hover { color: var(--accent); }
+
+        .nav-overlay .overlay-cta {
+            margin-top:    1rem;
+            background:    var(--grad-gold);
+            color:         var(--black) !important;
+            padding:       0.85rem 2.5rem;
+            font-family:   var(--font-body);
+            font-size:     0.9rem;
+            font-weight:   600;
+            letter-spacing: 0.12em;
+        }
+
+        .nav-overlay .overlay-cta:hover { opacity: 0.88; }
+
         @media (max-width: 1024px) {
             nav        { padding: 1rem 1.2rem; }
             .nav-cta   { display: none !important; }
+            .nav-links { display: none !important; }
+            .nav-right { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
 
-            .nav-links {
-                display:         none !important;
-                position:        fixed;
-                top:             0;
-                right:           0;
-                height:          100vh;
-                width:           75%;
-                max-width:       300px;
-                background:      rgba(10, 10, 10, 0.99);
-                backdrop-filter: blur(20px);
-                flex-direction:  column;
-                justify-content: center;
-                align-items:     center;
-                gap:             2.5rem;
-                border-left:     1px solid var(--border);
-                z-index:         550;
-            }
-
-            .nav-links.open     { display: flex !important; }
-            .nav-links a        { font-size: 1.1rem; letter-spacing: 0.15em; color: var(--white); }
-            .hamburger          { display: flex !important; }
+        @media (min-width: 1025px) {
+            .hamburger { display: none !important; }
+            .nav-links { display: flex !important; }
+            .nav-right { display: flex !important; }
+            .nav-overlay { display: none !important; pointer-events: none !important; }
         }
         .hero {
             min-height:    100vh;
@@ -2168,7 +2202,15 @@
 
     </nav>
 
-    <div class="nav-overlay" id="nav-overlay" onclick="closeMenu()"></div>
+    <div class="nav-overlay" id="nav-overlay">
+        <a href="#portfolio"    onclick="closeMenu()">Work</a>
+        <a href="#before-after" onclick="closeMenu()">Before / After</a>
+        <a href="#brands"       onclick="closeMenu()">Brands</a>
+        <a href="#about"        onclick="closeMenu()">About</a>
+        <a href="#services"     onclick="closeMenu()">Services</a>
+        <a href="#contact"      onclick="closeMenu()">Contact</a>
+        <a href="#contact" class="overlay-cta" onclick="closeMenu()">Hire Me</a>
+    </div>
 
     <section class="hero" id="home">
 
@@ -2190,7 +2232,7 @@
 
         <div class="hero-content">
             <div class="hero-tag">AI CINEMATIC VIDEO EDITOR • MOTION DESIGNER • VISUAL STORYTELLER</div>
-            <h1 class="hero-title">SHALEM <span>Raj</span></h1>
+            <h1 class="hero-title">SHALEM <span>RAJ</span></h1>
             <span font-size="30px">
                 Creating Viral Visual Stories That People Remember
             </span>
@@ -2206,13 +2248,6 @@
                 
             </div>
         </div>
-
-        <div class="hero-stats" aria-label="Statistics">
-            <div><div class="stat-num">150+</div><div class="stat-label">Projects Delivered</div></div>
-            <div><div class="stat-num">80M+</div><div class="stat-label">Organic Video Views</div></div>
-            <div><div class="stat-num">4+</div><div class="stat-label">Years of Creative Experience</div></div>
-        </div>
-
     </section>
 
     <div class="marquee-strip" aria-hidden="true">
@@ -2966,7 +3001,7 @@
                 <div class="pin-num">01</div>
                 <span class="pin-label">Most Popular</span>
                 <h3 class="pin-title">YOUTUBE VIDEO EDITING</h3>
-                <p class="pin-body">Engaging, high-retention edits designed for YouTube algorithms. Fast cuts, clean transitions, dynamic text overlays, and thumbnail-ready color grading.</p>
+                <p class="pin-body">High-retention edits designed for YouTube algorithms. Fast cuts, clean transitions, dynamic text overlays, and thumbnail-ready color grading.</p>
             </div>
 
             <div class="pin-card reveal" style="transition-delay: 0.10s">
@@ -2980,7 +3015,7 @@
                 <div class="pin-num">02</div>
                 <span class="pin-label">Premium</span>
                 <h3 class="pin-title">BRAND FILMS</h3>
-                <p class="pin-body">Cinematic storytelling for brands. Product showcases, company culture videos, and event highlights that leave a lasting impression. Every frame crafted to elevate your identity.</p>
+                <p class="pin-body">Storytelling for brands. Product showcases, company culture videos that leave a lasting impression. Every frame crafted to elevate your identity.</p>
             </div>
 
             <div class="pin-card reveal" style="transition-delay: 0.20s">
@@ -3175,13 +3210,6 @@
                     <a href="https://www.instagram.com/shalemraj._/?hl=en" class="social-link" aria-label="Instagram">IG</a>
                 </div>
             </div>
-
-            <div class="pin-card reveal" style="transition-delay:0.10s; break-inside:avoid; margin-bottom:20px;">
-                <span class="pin-label">Response Time</span>
-                <div class="pin-stat" style="margin-bottom:0.5rem;"><span class="pin-big">24h</span></div>
-                <p class="pin-body">Average response time. Quick, professional, and always communicative throughout the project.</p>
-            </div>
-
             <div class="pin-card reveal" style="transition-delay:0.15s; break-inside:avoid; margin-bottom:20px;">
                 <span class="pin-label">Send Message</span>
                 <h3 class="pin-title" style="margin-bottom:1.2rem;">DROP A MESSAGE</h3>
@@ -3210,11 +3238,6 @@
                 </div>
             </div>
 
-            <div class="pin-card reveal" style="transition-delay:0.20s; break-inside:avoid; margin-bottom:20px;">
-                <span class="pin-label">Availability</span>
-                <h3 class="pin-title" style="margin-bottom:0.75rem;">OPEN FOR WORK</h3>
-                <p class="pin-body">Currently accepting new projects for YouTube, Reels, Brand Films &amp; Motion Graphics. Let's build something great together.</p>
-            </div>
 
         </div>
     </section>
@@ -3355,14 +3378,12 @@
 
         function toggleMenu() {
             const hamburger = document.getElementById('hamburger');
-            const navLinks  = document.getElementById('nav-links');
             const overlay   = document.getElementById('nav-overlay');
 
-            if (navLinks.classList.contains('open')) {
+            if (overlay.classList.contains('show')) {
                 closeMenu();
             } else {
                 hamburger.classList.add('active');
-                navLinks.classList.add('open');
                 overlay.classList.add('show');
                 hamburger.setAttribute('aria-expanded', 'true');
                 document.body.style.overflow = 'hidden';
@@ -3371,7 +3392,6 @@
 
         function closeMenu() {
             document.getElementById('hamburger').classList.remove('active');
-            document.getElementById('nav-links').classList.remove('open');
             document.getElementById('nav-overlay').classList.remove('show');
             document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
