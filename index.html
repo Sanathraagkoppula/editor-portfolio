@@ -480,10 +480,49 @@
             .hero-stats > div { flex: 1; min-width: 0; }
         }
         .marquee-strip {
-            background:  transparent;
-            padding:     0.7rem 0;
-            overflow:    hidden;
-            white-space: nowrap;
+            position:        relative;
+            padding:         0.85rem 0;
+            overflow:        hidden;
+            white-space:     nowrap;
+            /* Glass background */
+            background:      linear-gradient(
+                                135deg,
+                                rgba(255,255,255,0.10) 0%,
+                                rgba(255,255,255,0.05) 40%,
+                                rgba(245,200,66,0.08)  70%,
+                                rgba(255,255,255,0.06) 100%
+                             );
+            backdrop-filter:         blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            /* Top + bottom glass borders */
+            border-top:    1px solid rgba(255,255,255,0.18);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            /* Subtle shadow depth */
+            box-shadow:
+                0 4px 30px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.20),
+                inset 0 -1px 0 rgba(0,0,0,0.15);
+        }
+
+        /* Left + right fade edge vignettes */
+        .marquee-strip::before,
+        .marquee-strip::after {
+            content:    '';
+            position:   absolute;
+            top: 0; bottom: 0;
+            width:      100px;
+            z-index:    2;
+            pointer-events: none;
+        }
+
+        .marquee-strip::before {
+            left: 0;
+            background: linear-gradient(90deg, rgba(10,8,3,0.55) 0%, transparent 100%);
+        }
+
+        .marquee-strip::after {
+            right: 0;
+            background: linear-gradient(270deg, rgba(10,8,3,0.55) 0%, transparent 100%);
         }
 
         .marquee-track {
@@ -500,19 +539,21 @@
             display:         inline-block;
             font-family:     var(--font-display);
             font-size:       1rem;
-            letter-spacing:  0.2em;
-            color:           var(--white);
+            letter-spacing:  0.18em;
+            color:           rgba(255,255,255,0.92);
             padding:         0 2.5rem;
+            text-shadow:     0 1px 4px rgba(0,0,0,0.4);
         }
 
         .marquee-dot {
-            display:       inline-block;
-            width:         5px;
-            height:        5px;
-            background:    var(--muted);
-            border-radius: 50%;
+            display:        inline-block;
+            width:          5px;
+            height:         5px;
+            background:     rgba(245,200,66,0.7);
+            border-radius:  50%;
             vertical-align: middle;
-            opacity:       0.4;
+            opacity:        0.8;
+            box-shadow:     0 0 6px rgba(245,200,66,0.5);
         }
 
         @media (max-width: 480px) {
