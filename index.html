@@ -39,14 +39,14 @@
             --font-display: 'Anton', sans-serif;
             --font-body:    'Lato', sans-serif;
 
-            /* Gradient palette */
-            --grad-gold:        linear-gradient(135deg, #e8c97a 0%, #f5e0a0 50%, #c8a040 100%);
-            --grad-gold-h:      linear-gradient(90deg,  #e8c97a 0%, #f5e0a0 50%, #c8a040 100%);
-            --grad-card:        linear-gradient(145deg, #1c1c1c 0%, #161616 60%, #121212 100%);
-            --grad-card-hover:  linear-gradient(145deg, #222018 0%, #1a1a16 60%, #161610 100%);
+            /* Gradient palette — high contrast */
+            --grad-gold:        linear-gradient(135deg, #f5c842 0%, #ffe080 50%, #d4a017 100%);
+            --grad-gold-h:      linear-gradient(90deg,  #f5c842 0%, #ffe080 50%, #d4a017 100%);
+            --grad-card:        linear-gradient(145deg, #1e1c18 0%, #18161200 60%, #141210 100%);
+            --grad-card-hover:  linear-gradient(145deg, #2a2310 0%, #1e1a0e 60%, #161208 100%);
             --grad-section-a:   linear-gradient(180deg, #0a0a0a 0%, #0e0d0b 100%);
             --grad-section-b:   linear-gradient(180deg, #111111 0%, #0d0d0b 100%);
-            --grad-accent-glow: radial-gradient(ellipse at 50% 0%, rgba(232,201,122,0.12) 0%, transparent 65%);
+            --grad-accent-glow: radial-gradient(ellipse at 50% 0%, rgba(245,200,66,0.25) 0%, transparent 65%);
         }
 
         html {
@@ -54,25 +54,26 @@
         }
 
         @keyframes bgShift {
-            0%   { background-position: 0% 0%;   }
-            25%  { background-position: 100% 0%;  }
+            0%   { background-position: 0% 0%;    }
+            25%  { background-position: 100% 0%;   }
             50%  { background-position: 100% 100%; }
-            75%  { background-position: 0% 100%;  }
-            100% { background-position: 0% 0%;   }
+            75%  { background-position: 0% 100%;   }
+            100% { background-position: 0% 0%;    }
         }
 
         body {
-            background-color: #080807;
+            background-color: #050408;
             background-image:
-                radial-gradient(ellipse at 15% 10%,  rgba(232,201,122,0.13) 0%, transparent 45%),
-                radial-gradient(ellipse at 85% 20%,  rgba(180,120,30,0.08)  0%, transparent 40%),
-                radial-gradient(ellipse at 70% 60%,  rgba(192,57,43,0.07)   0%, transparent 45%),
-                radial-gradient(ellipse at 20% 80%,  rgba(232,201,122,0.09) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%,  rgba(140,90,20,0.05)   0%, transparent 65%),
-                linear-gradient(160deg, #0d0b08 0%, #0a0a0a 35%, #0c0b09 60%, #090909 100%);
+                radial-gradient(ellipse 80% 60% at 10% 0%,   rgba(245,190,40,0.55)  0%, transparent 55%),
+                radial-gradient(ellipse 60% 50% at 92% 8%,   rgba(210,50,30,0.50)   0%, transparent 50%),
+                radial-gradient(ellipse 70% 55% at 78% 58%,  rgba(20,80,210,0.40)   0%, transparent 52%),
+                radial-gradient(ellipse 65% 50% at 12% 80%,  rgba(245,190,40,0.45)  0%, transparent 52%),
+                radial-gradient(ellipse 50% 45% at 50% 50%,  rgba(140,30,180,0.30)  0%, transparent 60%),
+                radial-gradient(ellipse 40% 35% at 55% 25%,  rgba(20,180,120,0.20)  0%, transparent 45%),
+                linear-gradient(145deg, #1a1000 0%, #06040e 35%, #0e0006 65%, #000510 100%);
             background-attachment: fixed;
-            background-size: 200% 200%;
-            animation: bgShift 20s ease infinite;
+            background-size: 220% 220%;
+            animation: bgShift 18s ease infinite;
             color:        var(--white);
             font-family:  var(--font-body);
             font-weight:  600;
@@ -102,8 +103,8 @@
             padding:         1.4rem 3rem;
             border-bottom:   1px solid var(--border);
             backdrop-filter: blur(16px);
-            background:      linear-gradient(180deg, rgba(10,10,10,0.92) 0%, rgba(14,13,11,0.88) 100%);
-            box-shadow:      0 1px 0 rgba(232,201,122,0.06), 0 8px 24px rgba(0,0,0,0.4);
+            background:      linear-gradient(180deg, rgba(15,12,4,0.96) 0%, rgba(10,8,3,0.92) 100%);
+            box-shadow:      0 1px 0 rgba(245,200,66,0.2), 0 8px 32px rgba(0,0,0,0.6);
             transition:      padding 0.3s;
             gap:             1rem;
         }
@@ -910,15 +911,16 @@
             width:        180px;
             height:       180px;
             border-radius: 14px;
-            background:   linear-gradient(145deg, #1c1c1c 0%, #161616 60%, #121212 100%);
-            border:       1px solid var(--border);
+            background:   linear-gradient(135deg, #2a2010 0%, #1a1508 55%, #0e0c06 100%);
+            border:       1px solid rgba(245,200,66,0.3);
             display:      flex;
             align-items:  center;
             justify-content: center;
             overflow:     hidden;
-            transition:   border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+            transition:   border-color 0.25s, transform 0.25s, box-shadow 0.25s, background 0.25s;
             position:     relative;
             padding:      16px;
+            box-shadow:   inset 0 1px 0 rgba(245,200,66,0.1);
         }
 
         .brand-logo-wrap.logo-loaded {
@@ -932,10 +934,10 @@
         }
 
         .brand-card:hover .brand-logo-wrap {
-            border-color: rgba(232, 201, 122, 0.5);
+            border-color: rgba(245,200,66,0.8);
             transform:    translateY(-4px);
-            box-shadow:   0 12px 32px rgba(232,201,122,0.18), 0 0 0 1px rgba(232,201,122,0.1);
-            background:   linear-gradient(145deg, #201f1a 0%, #1a1a15 60%, #161610 100%);
+            box-shadow:   0 16px 40px rgba(245,180,30,0.35), 0 0 0 1px rgba(245,200,66,0.35), 0 0 60px rgba(245,180,30,0.12);
+            background:   linear-gradient(135deg, #3a2c10 0%, #261e08 55%, #161208 100%);
         }
 
         .brand-logo-wrap.circle {
@@ -1201,20 +1203,20 @@
 
         .testimonial-card {
             padding:          2.2rem 2rem;
-            border:           1px solid var(--border);
+            border:           1px solid rgba(245,200,66,0.3);
             position:         relative;
             break-inside:     avoid;
             margin-bottom:    2.2rem;
-            background:       var(--grad-card);
-            box-shadow:       0 14px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.04);
+            background:       linear-gradient(135deg, #2a2010 0%, #1a1508 50%, #0e0c06 100%);
+            box-shadow:       0 14px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(245,200,66,0.15);
             transform:        rotate(var(--tilt, 0deg));
             transition:       transform 0.3s, border-color 0.3s, box-shadow 0.3s;
         }
 
         .testimonial-card:hover {
             transform:    rotate(0deg) translateY(-4px);
-            border-color: rgba(232,201,122,0.22);
-            box-shadow:   0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(232,201,122,0.1), inset 0 1px 0 rgba(232,201,122,0.08);
+            border-color: rgba(245,200,66,0.65);
+            box-shadow:   0 24px 50px rgba(0,0,0,0.7), 0 0 0 1px rgba(245,200,66,0.4), 0 0 30px rgba(245,180,30,0.15);
         }
 
         .testimonial-card:nth-child(6n+1) { --tilt: -1.4deg; }
@@ -1349,8 +1351,8 @@
         .form-group input,
         .form-group textarea,
         .form-group select {
-            background:   linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-            border:       1px solid var(--border);
+            background:   linear-gradient(135deg, rgba(245,200,66,0.06) 0%, rgba(20,16,8,0.9) 100%);
+            border:       1px solid rgba(245,200,66,0.2);
             color:        var(--white);
             padding:      0.85rem 1rem;
             font-family:  var(--font-body);
@@ -1364,9 +1366,9 @@
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
-            border-color: rgba(232,201,122,0.65);
-            background:   linear-gradient(135deg, rgba(232,201,122,0.06) 0%, rgba(232,201,122,0.02) 100%);
-            box-shadow:   0 0 0 3px rgba(232,201,122,0.08), inset 0 1px 0 rgba(232,201,122,0.06);
+            border-color: rgba(245,200,66,0.8);
+            background:   linear-gradient(135deg, rgba(245,200,66,0.12) 0%, rgba(20,16,4,0.95) 100%);
+            box-shadow:   0 0 0 3px rgba(245,200,66,0.15), inset 0 1px 0 rgba(245,200,66,0.1);
         }
 
         .form-group textarea {
@@ -1806,8 +1808,9 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(232,201,122,0.4) 30%, rgba(232,201,122,0.6) 50%, rgba(232,201,122,0.4) 70%, transparent 100%);
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #d4a017 15%, #f5c842 35%, #ffe080 50%, #f5c842 65%, #d4a017 85%, transparent 100%);
+            box-shadow: 0 0 16px rgba(245,200,66,0.5);
         }
 
         .footer-logo {
@@ -1891,19 +1894,21 @@
 
 /* --- Shared pin card --- */
 .pin-card {
-    background:    var(--grad-card);
+    background:    linear-gradient(135deg, #2a2010 0%, #1a1508 50%, #0e0c06 100%);
     border-radius: 16px;
-    border:        1px solid rgba(255,255,255,0.07);
+    border:        1px solid rgba(245,200,66,0.35);
     overflow:      hidden;
     break-inside:  avoid;
-    transition:    transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition:    transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
     position:      relative;
+    box-shadow:    0 4px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(245,200,66,0.12);
 }
 
 .pin-card:hover {
     transform:    translateY(-6px);
-    box-shadow:   0 20px 50px rgba(0,0,0,0.55), 0 0 0 1px rgba(232,201,122,0.15);
-    border-color: rgba(232,201,122,0.2);
+    box-shadow:   0 24px 60px rgba(0,0,0,0.75), 0 0 0 1px rgba(245,200,66,0.6), 0 0 40px rgba(245,180,30,0.2);
+    border-color: rgba(245,200,66,0.7);
+    background:   linear-gradient(135deg, #3a2c10 0%, #261e08 50%, #161208 100%);
 }
 
 /* --- Services masonry --- */
@@ -2040,9 +2045,9 @@
     content:    '';
     position:   absolute;
     top:        0; left: 0; right: 0;
-    height:     3px;
-    background: var(--grad-gold-h);
-    opacity:    0;
+    height:     4px;
+    background: linear-gradient(90deg, #d4a017 0%, #f5c842 40%, #ffe080 60%, #f5c842 80%, #d4a017 100%);
+    opacity:    0.7;
     transition: opacity 0.3s;
     border-radius: 16px 16px 0 0;
 }
