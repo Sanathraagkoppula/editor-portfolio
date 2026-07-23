@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    
+
     <title>shalemraj Raj | Cinematic Video Editor & Motion Designer</title>
     <meta name="description" content="Professional cinematic video editor and motion designer creating commercials, YouTube videos, social media reels, motion graphics, and brand films.">
+
+    <!-- Non-render-blocking font load -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.cdnfonts.com/css/autography">
+    <link rel="preload" as="style"
+          href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    </noscript>
+    <!-- Autography removed: was loaded from cdnfonts.com but never used in any CSS rule -->
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -64,7 +68,7 @@
                 radial-gradient(ellipse 50% 45% at 50% 50%,  rgba(140,30,180,0.30)  0%, transparent 60%),
                 radial-gradient(ellipse 40% 35% at 55% 25%,  rgba(20,180,120,0.20)  0%, transparent 45%),
                 linear-gradient(145deg, #1a1000 0%, #06040e 35%, #0e0006 65%, #000510 100%);
-            background-attachment: fixed;
+            background-attachment: fixed;   /* overridden to scroll on mobile below */
             background-size: 220% 220%;
             animation: bgShift 18s ease infinite;
             color:        var(--white);
@@ -84,6 +88,16 @@
             z-index: 1000;
             opacity: 0.35;
         }
+
+        /* background-attachment:fixed causes a repaint on every scroll frame on
+           iOS/Android — switch to scroll on mobile for smooth 60fps scrolling    */
+        @media (max-width: 1024px) {
+            body {
+                background-attachment: scroll;
+                animation: none;           /* also stop the 18s shift animation on mobile */
+            }
+        }
+
         /* ═══════════════════════════════════════════════
            DESKTOP NAV  (≥ 1025px)
            Horizontal bar: logo | links | CTA button
