@@ -84,7 +84,11 @@
             z-index: 1000;
             opacity: 0.35;
         }
-        nav {
+        /* ═══════════════════════════════════════════════
+           DESKTOP NAV  (≥ 1025px)
+           Horizontal bar: logo | links | CTA button
+        ════════════════════════════════════════════════ */
+        nav#main-nav {
             position:        fixed;
             top:             0;
             left:            0;
@@ -102,26 +106,27 @@
             gap:             1rem;
         }
 
+        /* Logo — shared between both navs */
         .nav-logo {
-            font-family:        var(--font-display);
-            font-size:          1.5rem;
-            letter-spacing:     0.1em;
-            background:         var(--grad-gold-h);
+            font-family:             var(--font-display);
+            font-size:               1.5rem;
+            letter-spacing:          0.1em;
+            background:              var(--grad-gold-h);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip:    text;
-            text-decoration:    none;
-            z-index:            1200;
-            flex-shrink:        0;
+            background-clip:         text;
+            text-decoration:         none;
+            z-index:                 1200;
+            flex-shrink:             0;
         }
 
+        /* Desktop link list */
         .nav-links {
-            display:    none;
-            gap:        2.5rem;
-            list-style: none;
+            display:     flex;
+            gap:         2.5rem;
+            list-style:  none;
             flex-shrink: 1;
         }
-
         .nav-links a {
             color:           var(--muted);
             text-decoration: none;
@@ -131,17 +136,17 @@
             transition:      color 0.25s;
             white-space:     nowrap;
         }
+        .nav-links a:hover { color: var(--white); }
 
-        .nav-links a:hover {
-            color: var(--white);
-        }
+        /* Desktop right-side slot */
         .nav-right {
-            display:     none;
+            display:     flex;
             align-items: center;
             gap:         0.75rem;
             flex-shrink: 0;
         }
 
+        /* Desktop CTA button */
         .nav-cta {
             background:      transparent;
             border:          1px solid rgba(232,201,122,0.55);
@@ -155,33 +160,66 @@
             text-decoration: none;
             transition:      background 0.3s, color 0.3s, box-shadow 0.3s;
             white-space:     nowrap;
-            display:         none;
+            display:         inline-block;
         }
-
         .nav-cta:hover {
-            background:  var(--grad-gold);
-            color:       var(--black);
-            box-shadow:  0 0 20px rgba(232,201,122,0.35);
+            background:   var(--grad-gold);
+            color:        var(--black);
+            box-shadow:   0 0 20px rgba(232,201,122,0.35);
             border-color: transparent;
         }
+
+        /* Slightly tighter at 1025–1100 */
         @media (max-width: 1100px) and (min-width: 1025px) {
-            nav               { padding: 1.2rem 1.8rem; }
-            .nav-links        { gap: 1.5rem; }
+            nav#main-nav  { padding: 1.2rem 1.8rem; }
+            .nav-links    { gap: 1.5rem; }
         }
+
+        /* Hide desktop nav entirely on mobile */
+        @media (max-width: 1024px) {
+            nav#main-nav { display: none !important; }
+        }
+
+
+        /* ═══════════════════════════════════════════════
+           MOBILE NAV  (≤ 1024px)
+           Slim top bar with logo + hamburger icon.
+           Tapping hamburger reveals full-screen overlay.
+        ════════════════════════════════════════════════ */
+
+        /* Mobile top bar */
+        .mobile-nav-bar {
+            display:         none;           /* hidden on desktop */
+            position:        fixed;
+            top:             0;
+            left:            0;
+            right:           0;
+            z-index:         1050;
+            align-items:     center;
+            justify-content: space-between;
+            padding:         1rem 1.2rem;
+            border-bottom:   1px solid var(--border);
+            backdrop-filter: blur(16px);
+            background:      linear-gradient(180deg, rgba(15,12,4,0.98) 0%, rgba(10,8,3,0.95) 100%);
+            box-shadow:      0 1px 0 rgba(245,200,66,0.2), 0 8px 32px rgba(0,0,0,0.7);
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-nav-bar { display: flex !important; }
+        }
+
+        /* Hamburger inside the mobile bar */
         .hamburger {
-            width:            32px;
-            height:           20px;
-            display:          none;
-            flex-direction:   column;
-            justify-content:  space-between;
-            cursor:           pointer;
-            position:         fixed;
-            top:              1.3rem;
-            right:            1.2rem;
-            z-index:          1200;
-            background:       none;
-            border:           none;
-            padding:          0;
+            width:           32px;
+            height:          20px;
+            display:         flex;
+            flex-direction:  column;
+            justify-content: space-between;
+            cursor:          pointer;
+            background:      none;
+            border:          none;
+            padding:         0;
+            flex-shrink:     0;
         }
 
         .hamburger span {
@@ -198,6 +236,7 @@
         .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0);           }
         .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
+        /* Full-screen overlay menu — mobile only */
         .nav-overlay {
             position:        fixed;
             inset:           0;
@@ -214,12 +253,10 @@
             pointer-events:  none;
             transition:      opacity 0.35s ease;
         }
-
         .nav-overlay.show {
             opacity:        1;
             pointer-events: all;
         }
-
         .nav-overlay a {
             color:           var(--white);
             text-decoration: none;
@@ -231,7 +268,6 @@
             transform:       translateY(16px);
             transition:      opacity 0.4s ease, transform 0.4s ease, color 0.25s;
         }
-
         .nav-overlay.show a:nth-child(1) { opacity:1; transform:translateY(0); transition-delay: 0.05s; }
         .nav-overlay.show a:nth-child(2) { opacity:1; transform:translateY(0); transition-delay: 0.10s; }
         .nav-overlay.show a:nth-child(3) { opacity:1; transform:translateY(0); transition-delay: 0.15s; }
@@ -239,33 +275,24 @@
         .nav-overlay.show a:nth-child(5) { opacity:1; transform:translateY(0); transition-delay: 0.25s; }
         .nav-overlay.show a:nth-child(6) { opacity:1; transform:translateY(0); transition-delay: 0.30s; }
         .nav-overlay.show a:nth-child(7) { opacity:1; transform:translateY(0); transition-delay: 0.35s; }
-
         .nav-overlay a:hover { color: var(--accent); }
 
         .nav-overlay .overlay-cta {
-            margin-top:    1rem;
-            background:    var(--grad-gold);
-            color:         var(--black) !important;
-            padding:       0.85rem 2.5rem;
-            font-family:   var(--font-body);
-            font-size:     0.9rem;
-            font-weight:   600;
+            margin-top:     1rem;
+            background:     var(--grad-gold);
+            color:          var(--black) !important;
+            padding:        0.85rem 2.5rem;
+            font-family:    var(--font-body);
+            font-size:      0.9rem;
+            font-weight:    600;
             letter-spacing: 0.12em;
         }
-
         .nav-overlay .overlay-cta:hover { opacity: 0.88; }
 
-        @media (max-width: 1024px) {
-            nav        { padding: 1rem 1.2rem; }
-            .hamburger { display: flex !important; }
-        }
-
+        /* Hide overlay on desktop — it belongs to mobile only */
         @media (min-width: 1025px) {
-            .hamburger  { display: none !important; }
-            .nav-links  { display: flex !important; }
-            .nav-right  { display: flex !important; }
-            .nav-cta    { display: inline-block !important; }
-            .nav-overlay { display: none !important; pointer-events: none !important; }
+            .mobile-nav-bar { display: none !important; }
+            .nav-overlay    { display: none !important; }
         }
         .hero {
             min-height:    100vh;
@@ -1904,9 +1931,9 @@
         }
 
         @media (max-width: 360px) {
-            nav        { padding: 0.85rem 1rem !important; }
-            .nav-logo  { font-size: 1.2rem; }
-            footer     { padding: 1.2rem 0.85rem; }
+            .mobile-nav-bar { padding: 0.85rem 1rem !important; }
+            .nav-logo       { font-size: 1.2rem; }
+            footer          { padding: 1.2rem 0.85rem; }
         }
 
         .footer-watermark {
@@ -2177,36 +2204,54 @@
 
 <body>
 
-    <nav id="main-nav">
+    <!-- ═══════════════════════════════════════════════
+         DESKTOP NAV  —  visible on screens ≥ 1025px
+         Horizontal bar: logo | links | Hire Me CTA
+    ════════════════════════════════════════════════ -->
+    <nav id="main-nav" aria-label="Desktop navigation">
 
         <a href="#" class="nav-logo">SHALEEM</a>
 
         <ul class="nav-links" id="nav-links">
-            <li><a href="#portfolio"    onclick="closeMenu()">Work</a></li>
-            <li><a href="#before-after" onclick="closeMenu()">Before / After</a></li>
-            <li><a href="#brands"       onclick="closeMenu()">Brands</a></li>
-            <li><a href="#about"        onclick="closeMenu()">About</a></li>
-            <li><a href="#services"     onclick="closeMenu()">Services</a></li>
-            <li><a href="#contact"      onclick="closeMenu()">Contact</a></li>
+            <li><a href="#portfolio">Work</a></li>
+            <li><a href="#before-after">Before / After</a></li>
+            <li><a href="#brands">Brands</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
 
-        <a href="#contact" class="nav-cta" onclick="closeMenu()">Hire Me</a>
+        <div class="nav-right">
+            <a href="#contact" class="nav-cta">Hire Me</a>
+        </div>
 
     </nav>
 
-    <button
-        class="hamburger"
-        id="hamburger"
-        aria-label="Toggle menu"
-        aria-expanded="false"
-        onclick="toggleMenu()"
-    >
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+    <!-- ═══════════════════════════════════════════════
+         MOBILE NAV  —  visible on screens ≤ 1024px
+         Slim top bar: logo + hamburger icon
+         Tapping hamburger opens full-screen overlay
+    ════════════════════════════════════════════════ -->
+    <div class="mobile-nav-bar" id="mobile-nav-bar" aria-label="Mobile navigation bar">
 
-    <div class="nav-overlay" id="nav-overlay">
+        <a href="#" class="nav-logo">SHALEEM</a>
+
+        <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            onclick="toggleMenu()"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+    <!-- Full-screen overlay menu — mobile only -->
+    <div class="nav-overlay" id="nav-overlay" role="dialog" aria-label="Mobile navigation menu" aria-modal="true">
         <a href="#portfolio"    onclick="closeMenu()">Work</a>
         <a href="#before-after" onclick="closeMenu()">Before / After</a>
         <a href="#brands"       onclick="closeMenu()">Brands</a>
