@@ -3816,6 +3816,123 @@
             }
         })();
 
+        /* ─── Touch Trail Effect (Mobile) ─── */
+        (function () {
+            if (window.matchMedia('(hover: hover)').matches) return; // desktop has mouse, skip
+
+            const canvas = document.createElement('canvas');
+            canvas.id = 'touch-trail-canvas';
+            Object.assign(canvas.style, {
+                position:      'fixed',
+                top:           '0',
+                left:          '0',
+                width:         '100%',
+                height:        '100%',
+                pointerEvents: 'none',
+                zIndex:        '9999',
+            });
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext('2d');
+            let W = canvas.width  = window.innerWidth;
+            let H = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                W = canvas.width  = window.innerWidth;
+                H = canvas.height = window.innerHeight;
+            });
+
+            const C       = { r: 245, g: 200, b: 66 };
+            const MAX_AGE = 40;
+            const FADE    = 1 / MAX_AGE;
+
+            const fingers = {};
+            const points  = [];
+            let   rafId   = null;
+
+            function addPoint(x, y, prevX, prevY) {
+                const dx = x - prevX, dy = y - prevY;
+                points.push({ x, y, age: 0, speed: Math.min(Math.sqrt(dx*dx + dy*dy), 40) });
+            }
+
+            window.addEventListener('touchstart', e => {
+                for (const t of e.changedTouches) {
+                    fingers[t.identifier] = { x: t.clientX, y: t.clientY };
+                    spawnRipple(t.clientX, t.clientY);
+                }
+                if (!rafId) rafId = requestAnimationFrame(loop);
+            }, { passive: true });
+
+            window.addEventListener('touchmove', e => {
+                for (const t of e.changedTouches) {
+                    const prev = fingers[t.identifier];
+                    if (prev) addPoint(t.clientX, t.clientY, prev.x, prev.y);
+                    fingers[t.identifier] = { x: t.clientX, y: t.clientY };
+                }
+                if (!rafId) rafId = requestAnimationFrame(loop);
+            }, { passive: true });
+
+            window.addEventListener('touchend', e => {
+                for (const t of e.changedTouches) delete fingers[t.identifier];
+            }, { passive: true });
+
+            const ripples = [];
+            function spawnRipple(x, y) {
+                ripples.push({ x, y, r: 0, maxR: 55, age: 0, maxAge: 30 });
+            }
+
+            function loop() {
+                ctx.clearRect(0, 0, W, H);
+
+                for (let i = points.length - 1; i >= 0; i--) {
+                    points[i].age++;
+                    if (points[i].age > MAX_AGE) { points.splice(i, 1); continue; }
+                }
+
+                if (points.length > 1) {
+                    for (let i = 1; i < points.length; i++) {
+                        const p0    = points[i - 1];
+                        const p1    = points[i];
+                        const life  = 1 - p1.age * FADE;
+                        const alpha = life * 0.85;
+                        const lw    = Math.max(2, 4 * life + p1.speed * 0.06);
+
+                        ctx.beginPath();
+                        ctx.moveTo(p0.x, p0.y);
+                        ctx.lineTo(p1.x, p1.y);
+                        ctx.strokeStyle = `rgba(${C.r},${C.g},${C.b},${alpha})`;
+                        ctx.lineWidth   = lw;
+                        ctx.lineCap     = 'round';
+                        ctx.lineJoin    = 'round';
+                        ctx.shadowBlur  = 14 * life;
+                        ctx.shadowColor = `rgba(${C.r},${C.g},${C.b},${alpha * 0.5})`;
+                        ctx.stroke();
+                        ctx.shadowBlur  = 0;
+                    }
+                }
+
+                for (let i = ripples.length - 1; i >= 0; i--) {
+                    const rp   = ripples[i];
+                    rp.age++;
+                    rp.r       = rp.maxR * (rp.age / rp.maxAge);
+                    const life = 1 - rp.age / rp.maxAge;
+                    if (life <= 0) { ripples.splice(i, 1); continue; }
+
+                    ctx.beginPath();
+                    ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(${C.r},${C.g},${C.b},${life * 0.7})`;
+                    ctx.lineWidth   = 2 * life;
+                    ctx.shadowBlur  = 10 * life;
+                    ctx.shadowColor = `rgba(${C.r},${C.g},${C.b},${life * 0.4})`;
+                    ctx.stroke();
+                    ctx.shadowBlur  = 0;
+                }
+
+                const hasActivity = points.length > 0 || ripples.length > 0 || Object.keys(fingers).length > 0;
+                rafId = hasActivity ? requestAnimationFrame(loop) : null;
+            }
+        })();
+
     </script>
 
 </body>
