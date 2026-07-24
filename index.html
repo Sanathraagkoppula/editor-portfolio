@@ -2222,7 +2222,7 @@
          DESKTOP NAV  —  visible on screens ≥ 1025px
          Horizontal bar: logo | links | Hire Me CTA
     ════════════════════════════════════════════════ -->
-    <nav id="main-nav" aria-label="Desktop navigation">1
+    <nav id="main-nav" aria-label="Desktop navigation">
 
         <a href="#" class="nav-logo">SHALEM</a>
 
@@ -3810,14 +3810,10 @@
                         const alpha = life * 0.9;
                         const w     = Math.max(1.5, 3.5 * life + p1.speed * 0.05);
 
-                        const grad = ctx.createLinearGradient(p0.x, p0.y, p1.x, p1.y);
-                        grad.addColorStop(0, `rgba(${C.r},${C.g},${C.b},${alpha})`);
-                        grad.addColorStop(1, `rgba(192,57,43,${alpha * 0.55})`);
-
                         ctx.beginPath();
                         ctx.moveTo(p0.x, p0.y);
                         ctx.lineTo(p1.x, p1.y);
-                        ctx.strokeStyle = grad;
+                        ctx.strokeStyle = `rgba(${C.r},${C.g},${C.b},${alpha})`;
                         ctx.lineWidth   = w;
                         ctx.lineCap     = 'round';
                         ctx.lineJoin    = 'round';
@@ -3828,18 +3824,7 @@
                     }
                 }
 
-                /* Tiny sparks around cursor tip */
-                if (mouse && drawing) {
-                    for (let s = 0; s < 3; s++) {
-                        const angle = Math.random() * Math.PI * 2;
-                        const r     = 3 + Math.random() * 7;
-                        ctx.beginPath();
-                        ctx.arc(mouse.x + Math.cos(angle) * r, mouse.y + Math.sin(angle) * r,
-                                Math.random() * 1.4, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(${C.r},${C.g},${C.b},${0.25 + Math.random() * 0.5})`;
-                        ctx.fill();
-                    }
-                }
+
 
                 if (points.length > 0 || drawing) {
                     rafId = requestAnimationFrame(loop);
