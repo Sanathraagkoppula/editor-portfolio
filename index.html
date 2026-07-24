@@ -398,7 +398,7 @@
 
         .hero-title {
             font-family:     var(--font-display);
-            font-size:       clamp(3rem, 7vw, 6rem);
+            font-size:       clamp(5rem, 12vw, 10rem);
             line-height:     0.92;
             letter-spacing:  0.04em;
             margin-bottom:   1.5rem;
@@ -510,7 +510,7 @@
             .hero-frame:nth-child(3)            { display: none !important; }
             .hero-content                       { max-width: 100%; position: relative; z-index: 2; }
             .hero-tag                           { font-size: 0.68rem; padding: 0.28rem 0.75rem; margin-bottom: 1rem; }
-            .hero-title                         { font-size: clamp(1.8rem, 7vw, 3rem); margin-bottom: 1rem; white-space: nowrap; }
+            .hero-title                         { font-size: clamp(3rem, 11vw, 5.5rem); margin-bottom: 1rem; white-space: nowrap; }
             .hero-desc                          { font-size: 0.88rem; max-width: 100%; margin-bottom: 1.5rem; }
 
             .hero-actions {
@@ -544,7 +544,7 @@
         }
 
         @media (max-width: 480px) {
-            .hero-title  { font-size: clamp(1.5rem, 8vw, 2.2rem); white-space: nowrap; }
+            .hero-title  { font-size: clamp(2.5rem, 12vw, 4rem); white-space: nowrap; }
             .hero-stats  { gap: 0.5rem; }
             .stat-num    { font-size: 1.5rem; }
             .hero-stats > div { flex: 1; min-width: 0; }
@@ -3033,7 +3033,7 @@
                 <span class="pin-label">Stats</span>
                 <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1rem;">
                     <div><div class="pin-stat"><span class="pin-big">150+</span></div><div class="pin-label" style="margin:0">Projects</div></div>
-                    <div><div class="pin-stat"><span class="pin-big">80M+</span></div><div class="pin-label" style="margin:0">Views</div></div>
+                    <div><div class="pin-stat"><span class="pin-big">100M+</span></div><div class="pin-label" style="margin:0">Views</div></div>
                     <div><div class="pin-stat"><span class="pin-big">4+</span></div><div class="pin-label" style="margin:0">Years</div></div>
                 </div>
                 <p class="pin-body">Always excited to learn new technologies, explore AI-powered workflows, and create content that delivers both creative value and meaningful results.</p>
@@ -3184,22 +3184,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="testimonial-card reveal" style="transition-delay: 0.25s">
-                <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-                <p class="testimonial-text">
-                    From concept to final cut, shalemraj handled our product launch video with real care.
-                    The pacing and sound design made the film feel far more premium than we expected.
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar" aria-hidden="true">AK</div>
-                    <div>
-                        <div class="author-name">Ananya Krishnan</div>
-                        <div class="author-role">Marketing Lead · Verve Wearables</div>
-                    </div>
-                </div>
-            </div>
-
             <div class="testimonial-card reveal" style="transition-delay: 0.30s">
                 <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
                 <p class="testimonial-text">
@@ -3229,22 +3213,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="testimonial-card reveal" style="transition-delay: 0.40s">
-                <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-                <p class="testimonial-text">
-                    Reliable, talented, and genuinely invested in getting the story right. shalemraj delivered our
-                    wedding highlight film ahead of schedule and it brought the whole family to tears.
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar" aria-hidden="true">TN</div>
-                    <div>
-                        <div class="author-name">Tarun Nair</div>
-                        <div class="author-role">Client · Nair-Menon Wedding</div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -3465,6 +3433,15 @@
             document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
         }
+
+        document.addEventListener('click', function(e) {
+            const overlay   = document.getElementById('nav-overlay');
+            const hamburger = document.getElementById('hamburger');
+            if (!overlay || !overlay.classList.contains('show')) return;
+            if (!overlay.contains(e.target) && !hamburger.contains(e.target)) {
+                closeMenu();
+            }
+        });
 
         const revealObserver = new IntersectionObserver(entries => {
             entries.forEach(e => {
